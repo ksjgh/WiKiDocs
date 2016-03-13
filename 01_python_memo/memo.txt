@@ -1,0 +1,27 @@
+### continuous method apply
+from Building Machine Learning with python p.85
+  X.toarray().transpose()
+  X.toarray().transpose().traspose() and other method addOn
+  print(type(X.toarray()))-->numpy array
+
+
+### get current path, working directory
+
+  http://devanix.tistory.com/298
+  # get running file path
+  import os,sys
+  print(os.path.dirname(os.path.realpath(__file__)))
+
+  # get running file full path and file name
+  print(os.path.realpath(__file__))
+
+  # get working directory
+  print(os.getcwd())
+
+  os.path.join(path1[,path2[,...]])
+  해당 OS 형식에 맞도록 입력 받은 경로를 연결합니다. (입력 중간에 절대경로가 나오면 이전에
+  취합된 경로는 제거하고 다시 연결합니다)
+  >>> join('C:\\Python30', 'Script', 'test.py')
+  'C:\\Python30\\Script\\test.py'
+  >>> join('C:\\Python30', 'D:\\Test', 'test.py')
+  'D:\\Test\\test.py'
