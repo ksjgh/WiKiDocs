@@ -9,7 +9,7 @@
 # 위 보기와 같이 CameleCase를 Pothole_case 로 바꾸는 함수를 만들어요!
 
 def CameleCase_to_Pothole_case(cc):
-    #pc=''
+    pc=''
     for c in cc:
         if c.isupper():c='_'+c.lower()
         elif c.isdigit():c='_'+c
