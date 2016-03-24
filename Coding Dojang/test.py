@@ -1,28 +1,73 @@
 import numpy as np
 
-# def MakeSpiralArray(array_size):
-#     N=array_size
-#
-#     return sa
+class point_2D:
+    def __init__(self,x,y):
+        self.x=x
+        self.y=y
 
+def Change_Direction(direction):
+    if direction=='right' : direction='down'
+    if direction=='left' : direction='up'
+    if direction=='up' : direction='right'
+    if direction=='down' : direction='left'
+
+    return direction
+
+def Find_Next(direction,current_position,array_size):
+
+    limit=array_size
+    next_position=point_2D(0,0)
+    next_position.x=current_position.x
+    next_position.y=current_position.y
+
+    if direction=='right' and (current_position.x+1)<limit and (current_position.x+1)==0:
+        next_position.x=current_position.x+1
+        return next_position
+    if direction=='left' and (current_position.x-1)<limit and (current_position.x-1)==0:
+        next_position.x=current_position.x-1
+        return next_position
+    if direction=='up' and (current_position.y-1)<limit and (current_position.y-1)==0 :
+        next_position.y=current_position.y-1
+        return next_position
+    if direction=='down' and (current_position.y+1)<limit and (current_position.y+1)==0 :
+        next_position.y=current_position.y+1
+        return next_position
+
+    direction=Change_Direction(direction)
+    next_position=Find_Next(direction,current_position,limit)
+    return next_position
+
+
+def Write_Array(sa,next_position,i) :
+    sa[next_position.x,next_position.y]=i
+
+def MakeSpiralArray(array,array_size):
+    sa=array
+    N=array_size
+
+    direction="right"
+    current_position=point_2D(0,0)
+    next_position=point_2D(0,0)
+
+    for i in range(N**2-1) :
+        next_position=Find_Next(direction,current_position,N)
+        Write_Array(sa,next_position,i)
+
+        current_position.x=next_position.x
+        current_position.y=next_position.y
 
 def print_array(array,array_size):
     ar=array
     N=array_size
     for i in range(N):
         for j in range(N):
-             print("%3d" % ar[i][j],end="")
+             print("%3d" % ar[i,j],end="")
         print("")
-    #           print(column, end="")
-    # print(end="\n")
 
-    # for i in range(N):print(ar[i,:])
-            # print('{0}'.format(ar[i,j])+' '*sp)
-        #print('\n')
-
+#### main ####
 N=6
 sa=np.zeros((N,N),dtype=int)
-# sa=MakeSpiralArray(N)
+MakeSpiralArray(sa,N)
 print_array(sa,N)
 
 
