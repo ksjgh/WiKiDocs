@@ -1,6 +1,21 @@
-N=6
+import numpy as np
 
-def print_array(array,array_size,print_size):
-    i=j=0
+# def MakeSpiralArray(array_size):
+#     N=array_size
+#
+#     return sa
+
+
+def print_array(array,array_size):
+    ar=array
+    N=array_size
+    for i in range(N):
+        for j in range(N):
+             print("%3d" % ar[i][j],end="")
+        print("")
+
+
+N=6
+sa=np.zeros((N,N),dtype=int)
 sa=MakeSpiralArray(N)
-print_array(sa,N)
+print_array(sa,N,2)
