@@ -13,15 +13,41 @@
 # for x in arr_gen(10):
 #     print(x)
 
-def gen_combi(L,r):
-    if len(L)<=r or r<=0 : return L
-    combi_list=[]
-    for x in L:
-        combi_list.append(x)
-        L.remove(x)
-        combi_list.extend(gen_combi(L,r-1))
-        yield combi_list
+
+# def fibonacci(n):
+#     """Ein Fibonacci-Zahlen-Generator"""
+#     a, b, counter = 0, 1, 0
+#     while True:
+#         if (counter > n):
+#             return
+#         print(a,end=" ")
+#         a, b = b, a + b
+#         counter += 1
+# fibonacci(5)
+# f = fibonacci(5)
+# for x in f:
+# 	 # no linefeed is enforced by  end="":
+#     print(x, " ", end="") #
+# print()
 
 
-for i in gen_combi(list(range(5)),2):
-    print(i)
+# def permutations(items):
+#     n = len(items)
+#     if n==0: yield []
+#     else:
+#         for i in range(len(items)):
+#             for cc in permutations(items[:i]+items[i+1:]):
+#                 yield [items[i]]+cc
+#
+# for p in permutations(['r','e','d']): print(''.join(p))
+# for p in permutations(list("game")): print(''.join(p) + ", ", end="")
+
+def k_permutations(items, n):
+    if n==0: yield []
+    else:
+        for i in range(len(items)):
+            for ss in k_permutations(items, n-1):
+                if (not items[i] in ss):
+                    yield [items[i]]+ss
+
+for p in k_permutations(['r','e','d'],3): print(''.join(p))
