@@ -9,10 +9,12 @@ def update_family_tree(tree,parent,child) :
     tree[parent][1].add(child)  # update child in parent node
 
 
+# Caculate generation from tree
+# First , Check if the Node has no child then go up increasing gen
 def calc_generation(tree) :
     max_gen = 1
     for n in tree.keys() :
-        if not tree[n][1] :         # if there is no child
+        if not tree[n][1] :         # if NODE has no child
             gen = 1
             current_node = tree[n][0]
             while(True) :
