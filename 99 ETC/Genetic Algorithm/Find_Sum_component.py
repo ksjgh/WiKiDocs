@@ -23,6 +23,17 @@ for datum in fitness_history:
 from random import randint, random
 from operator import add
 
+target = 100    # target sum
+p_count = 20  # population 
+i_length = 5   # individual length
+i_min = 0
+i_max = (target/i_length)+1
+retain = 0.2
+random_select=0.3 # crossover probability
+mutate=0.01      # mutate probability
+numbef_of_evolve = 1000
+
+
 def individual(length, min, max):
     'Create a member of the population.'
     return [ randint(min,max) for x in xrange(length) ]
@@ -72,8 +83,7 @@ def evolve(pop, target, retain, random_select, mutate):
             # restricts the range of possible values,
             # but the function is unaware of the min/max
             # values used to create the individuals,
-            individual[pos_to_mutate] = randint(
-                min(individual), max(individual))
+            individual[pos_to_mutate] = randint(min(individual), max(individual))
     # crossover parents to create children
     parents_length = len(parents)
     desired_length = len(pop) - parents_length
@@ -90,15 +100,6 @@ def evolve(pop, target, retain, random_select, mutate):
     parents.extend(children)
     return parents
 	
-target = 10    # target sum
-p_count = 20  # population 
-i_length = 5   # individual length
-i_min = 0
-i_max = (target/i_length)+1
-retain = 0.2
-random_select=0.05 # crossover probability
-mutate=0.01      # mutate probability
-numbef_of_evolve = 1000
 
 p = population(p_count, i_length, i_min, i_max)
 fitness_history = [grade(p, target),]
@@ -108,3 +109,7 @@ for i in xrange(numbef_of_evolve):
 
 for datum in fitness_history:
    print datum
+   
+# print(set(p))
+
+print(p)
