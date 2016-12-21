@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Rock-paper-scissors-lizard-Spock template
 
 import random
@@ -84,3 +85,8 @@ rpsls("lizard")
 rpsls("scissors")
 
 # always remember to check your completed program against the grading rubric
+=======
+import bitstring
+f1 = bitstring.BitArray(float=1.0, length=32)
+print (f1.read('bin'))
+>>>>>>> 9b2944eb8d117f6b90be630f7cabe6c253a569bd
